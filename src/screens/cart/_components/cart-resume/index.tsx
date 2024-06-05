@@ -3,6 +3,18 @@ import { Button } from '~/_components/ui/button'
 import { formatMoney } from '~/core/utils/format'
 import useCart from '~/hooks/useCart'
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '~/_components/ui/alert-dialog'
+
 export const CartResume = observer(() => {
   const { totalWithDiscount, clear, currentItems } = useCart()
 
@@ -42,14 +54,35 @@ export const CartResume = observer(() => {
           >
             Finalizar compra
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="w-full border-gray-400 bg-gray-100 py-6 hover:border-gray-600"
-            onClick={clear}
-          >
-            Limpar carrinho
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full border-gray-400 bg-gray-100 py-6 hover:border-gray-600"
+              >
+                Limpar carrinho
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Você deseja limpar o carrinho?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => {
+                    clear()
+                  }}
+                >
+                  Continuar
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </div>
     </div>
