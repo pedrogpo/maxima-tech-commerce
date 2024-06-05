@@ -6,6 +6,18 @@ import { Button } from '~/_components/ui/button'
 import { formatMoney } from '~/core/utils/format'
 import { IProduct } from '~/interfaces/api/products'
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '~/_components/ui/alert-dialog'
+
 interface ICartProductCard extends IProduct {
   defaultQuantity?: number
   onChangeQuantity?: (quantity: number) => void
@@ -41,9 +53,27 @@ export function CartProductCard({
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
             <h3 className="text-xl font-bold text-gray-900">{name}</h3>
-            <Button variant="destructive" size="sm" onClick={onRemove}>
-              <BiTrashAlt size={20} />
-            </Button>
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <Button variant="destructive" size="sm">
+                  <BiTrashAlt size={20} />
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Você deseja remover este produto do carrinho?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction onClick={onRemove}>
+                    Continuar
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
           <div className="flex items-center gap-2">
             <p className="text-sm text-gray-600">{description}</p>
