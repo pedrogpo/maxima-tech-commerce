@@ -16,14 +16,9 @@ import {
 function OrderProducts() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button
-          variant="ghost"
-          className="gap-3 text-xl font-bold text-gray-900"
-        >
-          Ordernar por
-          <HiMiniArrowsUpDown />
-        </Button>
+      <DropdownMenuTrigger className="flex items-center gap-3 text-xl font-bold text-gray-900">
+        Ordernar por
+        <HiMiniArrowsUpDown />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>Ordernar por</DropdownMenuLabel>
@@ -38,7 +33,7 @@ function OrderProducts() {
 
 export function ListHeader() {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex flex-wrap items-center justify-between gap-4">
       <div className="flex items-center gap-6">
         <h2 className="text-4xl font-bold text-gray-900">Lista de produtos</h2>
         <div className="flex items-center gap-2.5 rounded-sm bg-gray-200 px-3 py-1.5 text-base font-semibold text-gray-900">
