@@ -68,10 +68,8 @@ export function Navbar() {
           placeholder="Pesquisar por um produto"
         />
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant="ghost" aria-label="Minha conta">
-              <BiUser size={24} />
-            </Button>
+          <DropdownMenuTrigger aria-label="Minha conta">
+            <BiUser size={24} />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>Minha conta</DropdownMenuLabel>

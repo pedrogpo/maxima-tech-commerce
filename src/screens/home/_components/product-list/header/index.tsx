@@ -57,7 +57,9 @@ export function ListHeader() {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div className="flex items-center gap-6">
-        <h2 className="text-4xl font-bold text-gray-900">Lista de produtos</h2>
+        <h2 className="text-3xl font-bold text-gray-900 md:text-4xl">
+          Lista de produtos
+        </h2>
         <SelectedCategory />
       </div>
       <div className="flex items-center gap-4">
