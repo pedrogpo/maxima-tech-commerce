@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Button } from '~/_components/ui/button'
 import { formatMoney } from '~/core/utils/format'
 import { IProduct } from '~/interfaces/api/products'
 
 export function ProductCard({
+  id,
   category,
   image,
   name,
@@ -42,9 +44,11 @@ export function ProductCard({
             )}
           </div>
         </div>
-        <Button className="py-5" variant="default">
-          Adicionar ao carrinho
-        </Button>
+        <Link href={`/product/${id}`}>
+          <Button className="py-5" variant="default">
+            Visualizar Produto
+          </Button>
+        </Link>
       </div>
     </div>
   )

@@ -22,6 +22,7 @@ import { Button } from '~/_components/ui/button'
 import { Input } from '~/_components/atoms'
 import { navbarItems } from './navItems'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 function MobileButton() {
   const pathName = usePathname()
@@ -38,7 +39,9 @@ function MobileButton() {
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle className="mb-8">
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </SheetTitle>
           <div>
             {navbarItems.map((item, index) => (
@@ -59,8 +62,10 @@ function MobileButton() {
 
 export function Navbar() {
   return (
-    <div className="flex h-[125px] w-full items-center justify-between border-b border-b-gray-500 px-16">
-      <Logo />
+    <div className="flex h-[125px] w-full items-center justify-between border-b border-b-gray-500 px-8">
+      <Link href="/">
+        <Logo />
+      </Link>
       <MobileButton />
       <div className="hidden items-center gap-5 md:flex">
         <Input
