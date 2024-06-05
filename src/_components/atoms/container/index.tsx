@@ -5,5 +5,5 @@ interface IContainer {
 }
 
 export function Container({ children }: IContainer) {
-  return <div className="mx-auto mt-12 max-w-[1440px] px-8">{children}</div>
+  return <div className="mx-auto max-w-[1790px] px-8">{children}</div>
 }

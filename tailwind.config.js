@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'hero-banner': "url('/img/banners/hero.png')",
+      },
       fontFamily: {
         sans: ['var(--font-sans)'],
       },

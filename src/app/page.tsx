@@ -1,3 +1,3 @@
-export default function Page() {
-  return <div></div>
-}
+import HomeScreen from '~/screens/home'
+
+export default HomeScreen

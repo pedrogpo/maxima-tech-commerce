@@ -28,15 +28,12 @@ function MobileButton() {
 
   return (
     <Sheet>
-      <SheetTrigger>
-        <Button
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          variant="ghost"
-          aria-label="Minha conta"
-        >
-          <span className="sr-only">Open main menu</span>
-          <BiMenu size={24} />
-        </Button>
+      <SheetTrigger
+        aria-label="Minha conta"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+      >
+        <span className="sr-only">Open main menu</span>
+        <BiMenu size={24} />
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
