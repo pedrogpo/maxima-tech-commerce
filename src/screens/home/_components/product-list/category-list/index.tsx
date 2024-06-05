@@ -1,4 +1,5 @@
 'use client'
+import { AnimatePresence, motion } from 'framer-motion'
 import { observer } from 'mobx-react-lite'
 import Image from 'next/image'
 import { Categories } from '~/core/constants/categories'
@@ -10,15 +11,31 @@ interface ICategoryBox {
 }
 
 const CategoryBox = observer(({ category, image }: ICategoryBox) => {
-  const { setSelectedCategory } = categoryStore
+  const { setSelectedCategory, resetSelectedCategory, selectedCategory } =
+    categoryStore
 
   return (
     <button
       onClick={() => {
+        if (selectedCategory === category) {
+          resetSelectedCategory()
+          return
+        }
         setSelectedCategory(category)
       }}
-      className="flex cursor-pointer flex-col items-center justify-center gap-4 text-center outline-gray-600"
+      className={`relative flex cursor-pointer flex-col items-center justify-center gap-4 text-center outline-gray-600`}
     >
+      <AnimatePresence>
+        {selectedCategory === category && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
+            className="absolute -top-4 h-1 w-8 rounded-full bg-primary"
+          ></motion.div>
+        )}
+      </AnimatePresence>
       <Image
         src={image}
         width={100}

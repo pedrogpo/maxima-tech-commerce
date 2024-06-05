@@ -12,7 +12,12 @@ export function ProductCard({
   promotional_price,
 }: IProduct) {
   return (
-    <div className="flex flex-col rounded-lg bg-gray-100 shadow-xl">
+    <div className="relative flex flex-col rounded-lg bg-gray-100 shadow-xl">
+      {promotional_price && discount_percentage && (
+        <div className="absolute left-1/2 top-2 -translate-x-1/2 rounded-lg bg-black px-3 py-1.5 text-xs text-white">
+          {discount_percentage}% OFF
+        </div>
+      )}
       <Image
         src={image}
         width={440}
