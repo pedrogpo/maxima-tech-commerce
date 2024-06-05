@@ -1,11 +1,10 @@
 'use client'
 import { observer } from 'mobx-react-lite'
-import { ProductCard } from '~/_components/molecules/cards/product'
 import { IProduct } from '~/interfaces/api/products'
 import { categoryStore } from '~/store/product-list/category'
-import { Pagination } from '~/_components/molecules/pagination'
 import { useEffect, useState } from 'react'
 import { orderProductStore } from '~/store/product-list/order'
+import { Pagination, ProductCard } from '~/_components/molecules'
 
 interface IListProducts {
   cachedProductList: IProduct[]

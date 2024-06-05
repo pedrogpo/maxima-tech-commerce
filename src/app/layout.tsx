@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter as FontSans } from 'next/font/google'
-import { Navbar } from '~/_components/organisms'
+import { Footer, Navbar } from '~/_components/organisms'
 
 import { cn } from '@/lib/utils'
 
@@ -24,12 +24,13 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'bg-background min-h-screen font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
         )}
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   )

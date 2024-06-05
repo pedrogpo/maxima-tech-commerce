@@ -62,7 +62,7 @@ export function Navbar() {
     <div className="flex h-[125px] w-full items-center justify-between border-b border-b-gray-500 px-16">
       <Logo />
       <MobileButton />
-      <div className={'hidden items-center gap-5 md:flex'} id="navbar-default">
+      <div className="hidden items-center gap-5 md:flex">
         <Input
           startIcon={<BiSearchAlt size={24} />}
           placeholder="Pesquisar por um produto"
