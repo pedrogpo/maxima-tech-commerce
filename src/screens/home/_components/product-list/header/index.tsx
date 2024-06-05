@@ -16,17 +16,17 @@ import { observer } from 'mobx-react-lite'
 import { categoryStore } from '~/store/product-list/category'
 import { orderProductStore } from '~/store/product-list/order'
 
-function OrderProducts() {
-  const { setSelectedType } = orderProductStore
+const OrderProducts = observer(() => {
+  const { setSelectedType, getTranslatedType } = orderProductStore
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-3 text-xl font-bold text-gray-900">
-        Ordernar por
+        Ordernar por {getTranslatedType()}
         <HiMiniArrowsUpDown />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Ordernar por</DropdownMenuLabel>
+        <DropdownMenuLabel>Ordernar por </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={() => {
@@ -52,7 +52,7 @@ function OrderProducts() {
       </DropdownMenuContent>
     </DropdownMenu>
   )
-}
+})
 
 const SelectedCategory = observer(() => {
   const { selectedCategory, resetSelectedCategory } = categoryStore

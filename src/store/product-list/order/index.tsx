@@ -16,6 +16,14 @@ class OrderProductStore {
   resetSelectedType() {
     this.selectedType = null
   }
+
+  getTranslatedType() {
+    if (!this.selectedType) return null
+
+    if (this.selectedType === 'name') return 'Nome'
+    if (this.selectedType === 'price') return 'Preço'
+    if (this.selectedType === 'category') return 'Categoria'
+  }
 }
 
 export const orderProductStore = new OrderProductStore()
