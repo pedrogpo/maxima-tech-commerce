@@ -12,6 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '~/_components/ui/dropdown-menu'
+import { observer } from 'mobx-react-lite'
+import { categoryStore } from '~/store/product-list/category'
 
 function OrderProducts() {
   return (
@@ -31,15 +33,32 @@ function OrderProducts() {
   )
 }
 
+const SelectedCategory = observer(() => {
+  const { selectedCategory, resetSelectedCategory } = categoryStore
+
+  if (!selectedCategory) return null
+
+  return (
+    <div className="flex items-center gap-2.5 rounded-sm bg-gray-200 px-3 py-1.5 text-base font-semibold text-gray-900">
+      <span>{selectedCategory}</span>
+      <button className="outline-gray-500">
+        <BiX
+          size={16}
+          onClick={() => {
+            resetSelectedCategory()
+          }}
+        />
+      </button>
+    </div>
+  )
+})
+
 export function ListHeader() {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4">
       <div className="flex items-center gap-6">
         <h2 className="text-4xl font-bold text-gray-900">Lista de produtos</h2>
-        <div className="flex items-center gap-2.5 rounded-sm bg-gray-200 px-3 py-1.5 text-base font-semibold text-gray-900">
-          <span>Tênis</span>
-          <BiX size={16} />
-        </div>
+        <SelectedCategory />
       </div>
       <div className="flex items-center gap-4">
         <OrderProducts />
