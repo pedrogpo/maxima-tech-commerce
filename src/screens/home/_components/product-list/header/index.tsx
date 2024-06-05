@@ -14,8 +14,11 @@ import {
 } from '~/_components/ui/dropdown-menu'
 import { observer } from 'mobx-react-lite'
 import { categoryStore } from '~/store/product-list/category'
+import { orderProductStore } from '~/store/product-list/order'
 
 function OrderProducts() {
+  const { setSelectedType } = orderProductStore
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex items-center gap-3 text-xl font-bold text-gray-900">
@@ -25,9 +28,27 @@ function OrderProducts() {
       <DropdownMenuContent>
         <DropdownMenuLabel>Ordernar por</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Nome</DropdownMenuItem>
-        <DropdownMenuItem>Preço</DropdownMenuItem>
-        <DropdownMenuItem>Categoria</DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            setSelectedType('name')
+          }}
+        >
+          Nome
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            setSelectedType('price')
+          }}
+        >
+          Preço
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            setSelectedType('category')
+          }}
+        >
+          Categoria
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )
