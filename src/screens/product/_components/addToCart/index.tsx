@@ -1,4 +1,5 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { BiLoaderAlt } from 'react-icons/bi'
 import { Button } from '~/_components/ui/button'
 import useCart from '~/hooks/useCart'
@@ -9,19 +10,20 @@ interface IAddToCart {
 }
 
 export function AddToCart({ productData }: IAddToCart) {
-  const { add, isLoading } = useCart()
+  const { add, isAddLoading } = useCart()
+  const { push } = useRouter()
 
   return (
     <Button
-      disabled={isLoading}
+      disabled={isAddLoading}
       variant="default"
       size="lg"
       onClick={() => {
-        add(productData)
+        add(productData).then(() => push('/cart'))
       }}
     >
       <BiLoaderAlt
-        className={`mr-3 animate-spin ${isLoading ? 'block' : 'hidden'}`}
+        className={`mr-3 animate-spin ${isAddLoading ? 'block' : 'hidden'}`}
       />
       Adicionar ao carrinho
     </Button>

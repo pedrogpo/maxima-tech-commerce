@@ -10,12 +10,13 @@ import {
 import localForage from 'localforage'
 import { enableStaticRendering } from 'mobx-react-lite'
 import { makeAutoObservable } from 'mobx'
+import { ICartItem } from '~/interfaces/cartItem'
 
 const isServer = typeof window === 'undefined'
 enableStaticRendering(isServer)
 
 class CartStore {
-  items: IProduct[] = []
+  items: ICartItem[] = []
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true })
@@ -43,7 +44,14 @@ class CartStore {
   }
 
   add(product: IProduct) {
-    this.items.push(product)
+    const existingProduct = this.items.find((p) => p.id === product.id)
+
+    if (existingProduct) {
+      existingProduct.quantity++
+      return
+    }
+
+    this.items.push({ ...product, quantity: 1 })
   }
 
   remove(id: string) {
@@ -63,6 +71,14 @@ class CartStore {
       (acc, product) => acc + (product.promotional_price || product.price),
       0,
     )
+  }
+
+  changeQuantity(id: string, quantity: number) {
+    const product = this.items.find((p) => p.id === id)
+
+    if (!product) return
+
+    product.quantity = quantity
   }
 }
 

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import Toast from '~/core/toast'
-import { IProduct } from '~/interfaces/api/products'
 import { cartStore } from '~/store/cart'
+import useClientSideStore from './useClientSideStore'
+import { IProduct } from '~/interfaces/api/products'
 
 const addToCartService = async (product: IProduct) => {
-  // simulando uma call de api
+  // Aqui seria uma call de API, por exemplo
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true)
@@ -13,23 +14,20 @@ const addToCartService = async (product: IProduct) => {
 }
 
 const useCart = () => {
-  const [currentItems, setCurrentItems] = useState<IProduct[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const clientCartStore = useClientSideStore(cartStore)
+  const currentItems = clientCartStore?.items || []
+  const [isAddLoading, setIsAddLoading] = useState<boolean>(false)
+  const [isCartLoading, setIsCartLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    const loadItems = async () => {
-      setCurrentItems(cartStore.items)
-    }
-
-    loadItems()
-  }, [cartStore.items])
+    setIsCartLoading(false)
+  }, [])
 
   const add = async (product: IProduct) => {
-    setIsLoading(true)
+    setIsAddLoading(true)
     try {
-      // Call the service function to add item to cart
       await addToCartService(product)
-      // Add the item to the cart store
+
       cartStore.add(product)
 
       Toast({
@@ -42,7 +40,7 @@ const useCart = () => {
         type: 'error',
       })
     } finally {
-      setIsLoading(false)
+      setIsAddLoading(false)
     }
   }
 
@@ -62,8 +60,17 @@ const useCart = () => {
     })
   }
 
-  const total = cartStore.total
-  const totalWithDiscount = cartStore.totalWithDiscount
+  const changeQuantity = (id: string, quantity: number) => {
+    cartStore.changeQuantity(id, quantity)
+
+    Toast({
+      message: 'Quantidade alterada com sucesso',
+      type: 'success',
+    })
+  }
+
+  const total = clientCartStore?.total || 0
+  const totalWithDiscount = clientCartStore?.totalWithDiscount || 0
 
   return {
     add,
@@ -71,8 +78,10 @@ const useCart = () => {
     clear,
     total,
     totalWithDiscount,
-    isLoading,
+    isAddLoading,
     currentItems,
+    changeQuantity,
+    isCartLoading,
   }
 }
 
