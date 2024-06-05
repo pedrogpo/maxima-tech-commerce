@@ -4,7 +4,7 @@ import { Button } from '~/_components/ui/button'
 
 export function EmptyCart() {
   return (
-    <div className="mb-16 mt-16">
+    <div className="mb-32 mt-16">
       <Container>
         <div className="flex h-[300px] flex-col items-center justify-center gap-2">
           <h1 className="text-3xl font-bold text-gray-900">Carrinho vazio</h1>

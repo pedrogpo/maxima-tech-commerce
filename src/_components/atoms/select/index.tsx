@@ -28,7 +28,7 @@ export function Select({
 }: ISelect) {
   return (
     <SelectCN onValueChange={onChange} defaultValue={defaultValue}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] max-w-full">
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>

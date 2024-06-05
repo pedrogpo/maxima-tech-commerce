@@ -68,7 +68,8 @@ class CartStore {
 
   get totalWithDiscount() {
     return this.items.reduce(
-      (acc, product) => acc + (product.promotional_price || product.price),
+      (acc, product) =>
+        acc + (product.promotional_price || product.price) * product.quantity,
       0,
     )
   }

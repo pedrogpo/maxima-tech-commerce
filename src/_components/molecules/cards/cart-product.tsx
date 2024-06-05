@@ -24,20 +24,20 @@ export function CartProductCard({
   onRemove,
 }: ICartProductCard) {
   return (
-    <div className="relative flex rounded-lg bg-gray-100 shadow-xl">
+    <div className="relative flex rounded-lg bg-gray-100 shadow-xl max-md:flex-col">
       {promotional_price && discount_percentage && (
-        <div className="absolute left-1/2 top-2 -translate-x-1/2 rounded-lg bg-black px-3 py-1.5 text-xs text-white">
+        <div className="absolute left-2 top-2 rounded-lg bg-black px-3 py-1.5 text-xs text-white">
           {discount_percentage}% OFF
         </div>
       )}
       <Image
         src={image}
-        width={220}
+        width={180}
         height={180}
         alt={name}
-        className="rounded-l-lg object-cover"
+        className="min-w-[200px] rounded-l-lg bg-center object-cover max-md:w-full"
       />
-      <div className="flex flex-col justify-center gap-6 p-6">
+      <div className="relative flex w-full flex-col gap-6 p-6 pb-[120px]">
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
             <h3 className="text-xl font-bold text-gray-900">{name}</h3>
@@ -49,7 +49,7 @@ export function CartProductCard({
             <p className="text-sm text-gray-600">{description}</p>
           </div>
         </div>
-        <div className="flex w-full flex-wrap justify-between gap-4">
+        <div className="absolute bottom-4 left-6 flex w-[calc(100%-3rem)] flex-col flex-wrap justify-between gap-4">
           <div>
             <Select
               placeholder="Quantidade"
@@ -61,7 +61,7 @@ export function CartProductCard({
               onChange={(value) => onChangeQuantity?.(Number(value))}
             />
           </div>
-          <div>
+          <div className="flex items-center gap-4">
             <p className="text-base font-semibold text-gray-900">
               {formatMoney(promotional_price || price)}
             </p>
