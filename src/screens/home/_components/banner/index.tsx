@@ -6,8 +6,8 @@ export default function Banner() {
           Black friday
         </h1>
         <p className="text-2xl font-normal text-gray-200">
-          We know how large objects will act, but things on a small scale just
-          do not act that way.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          tempor enim id luctus.
         </p>
       </div>
     </div>
