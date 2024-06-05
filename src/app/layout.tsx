@@ -1,8 +1,10 @@
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 import { Inter as FontSans } from 'next/font/google'
 import { Footer, Navbar } from '~/_components/organisms'
 
 import { cn } from '@/lib/utils'
+import { ToastContainer } from 'react-toastify'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -31,6 +33,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   )

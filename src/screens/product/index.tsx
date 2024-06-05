@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { Container } from '~/_components/atoms'
 import { Breadcrumb } from '~/_components/molecules'
-import { Button } from '~/_components/ui/button'
 import { formatMoney } from '~/core/utils/format'
 import { IProduct } from '~/interfaces/api/products'
+import { AddToCart } from './_components/addToCart'
 
 interface IProductScreen {
   productData: IProduct
@@ -29,7 +29,7 @@ export default function ProductScreen({ productData }: IProductScreen) {
           width={800}
           height={800}
           alt={name}
-          className="w-full rounded-lg object-cover"
+          className="max-h-[800px] w-full rounded-lg object-cover"
         />
         <div>
           <Breadcrumb
@@ -58,9 +58,7 @@ export default function ProductScreen({ productData }: IProductScreen) {
               )}
             </div>
             <div className="mt-8 flex items-center gap-4">
-              <Button variant="default" size="lg">
-                Adicionar ao carrinho
-              </Button>
+              <AddToCart productData={productData} />
               {discount_percentage && (
                 <span className="text-lg font-semibold text-green-500">
                   {discount_percentage}% OFF

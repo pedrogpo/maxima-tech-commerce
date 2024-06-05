@@ -14,10 +14,12 @@ const CategoryBox = observer(({ category, image }: ICategoryBox) => {
   const { setSelectedCategory, resetSelectedCategory, selectedCategory } =
     categoryStore
 
+  const isCurrentSelected = selectedCategory === category
+
   return (
     <button
       onClick={() => {
-        if (selectedCategory === category) {
+        if (isCurrentSelected) {
           resetSelectedCategory()
           return
         }
@@ -26,7 +28,7 @@ const CategoryBox = observer(({ category, image }: ICategoryBox) => {
       className={`relative flex cursor-pointer flex-col items-center justify-center gap-4 text-center outline-gray-600`}
     >
       <AnimatePresence>
-        {selectedCategory === category && (
+        {isCurrentSelected && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -43,7 +45,13 @@ const CategoryBox = observer(({ category, image }: ICategoryBox) => {
         alt={category}
         className="h-[100px] min-h-[100px] w-[100px] min-w-[100px] rounded-full object-cover"
       />
-      <span className="text-xl font-bold text-gray-900">{category}</span>
+      <span
+        className={`text-xl ${
+          isCurrentSelected ? 'font-bold' : 'font-normal'
+        } text-gray-900`}
+      >
+        {category}
+      </span>
     </button>
   )
 })

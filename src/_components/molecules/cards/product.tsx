@@ -45,7 +45,7 @@ export function ProductCard({
           </div>
         </div>
         <Link href={`/product/${id}`}>
-          <Button className="py-5" variant="default">
+          <Button className="w-full py-5" variant="default">
             Visualizar Produto
           </Button>
         </Link>
