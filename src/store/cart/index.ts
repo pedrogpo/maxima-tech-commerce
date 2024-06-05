@@ -63,7 +63,10 @@ class CartStore {
   }
 
   get total() {
-    return this.items.reduce((acc, product) => acc + product.price, 0)
+    return this.items.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0,
+    )
   }
 
   get totalWithDiscount() {
