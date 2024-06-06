@@ -6,6 +6,8 @@ export default async function Products() {
   try {
     const productList = await getProducts()
 
+    if (productList.length === 0) throw new HttpError('Not found', 404)
+
     return <ListProducts cachedProductList={productList} />
   } catch (err) {
     // const { message } = err as Error | HttpError
