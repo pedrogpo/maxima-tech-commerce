@@ -15,7 +15,7 @@ import { ICartItem } from '~/interfaces/cartItem'
 const isServer = typeof window === 'undefined'
 enableStaticRendering(isServer)
 
-class CartStore {
+export class CartStore {
   items: ICartItem[] = []
 
   constructor() {
