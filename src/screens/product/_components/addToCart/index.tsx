@@ -21,6 +21,7 @@ export function AddToCart({ productData }: IAddToCart) {
       onClick={() => {
         addProductToCart(productData).then(() => push('/cart'))
       }}
+      data-testid="add-to-cart-button"
     >
       <BiLoaderAlt
         className={`mr-3 animate-spin ${isAddLoading ? 'block' : 'hidden'}`}

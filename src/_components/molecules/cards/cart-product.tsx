@@ -36,7 +36,10 @@ export function CartProductCard({
   onRemove,
 }: ICartProductCard) {
   return (
-    <div className="relative flex rounded-lg bg-gray-100 shadow-xl max-md:flex-col">
+    <div
+      data-testid="cart-item"
+      className="relative flex rounded-lg bg-gray-100 shadow-xl max-md:flex-col"
+    >
       {promotional_price && discount_percentage && (
         <div className="absolute left-2 top-2 rounded-lg bg-black px-3 py-1.5 text-xs text-white">
           {discount_percentage}% OFF
@@ -48,14 +51,24 @@ export function CartProductCard({
         height={800}
         alt={name}
         className="min-w-[200px] rounded-l-lg bg-center object-cover max-md:w-full"
+        data-testid="cart-item-image"
       />
       <div className="relative flex w-full flex-col gap-6 p-6 pb-[120px]">
         <div className="flex flex-col gap-4">
           <div className="flex justify-between">
-            <h3 className="text-xl font-bold text-gray-900">{name}</h3>
+            <h3
+              className="text-xl font-bold text-gray-900"
+              data-testid="cart-item-name"
+            >
+              {name}
+            </h3>
             <AlertDialog>
               <AlertDialogTrigger>
-                <Button variant="destructive" size="sm">
+                <Button
+                  data-testid="cart-item-remove-button"
+                  variant="destructive"
+                  size="sm"
+                >
                   <BiTrashAlt size={20} />
                 </Button>
               </AlertDialogTrigger>
@@ -68,7 +81,10 @@ export function CartProductCard({
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction onClick={onRemove}>
+                  <AlertDialogAction
+                    data-testid="cart-item-confirm-remove-button"
+                    onClick={onRemove}
+                  >
                     Continuar
                   </AlertDialogAction>
                 </AlertDialogFooter>
@@ -92,7 +108,10 @@ export function CartProductCard({
             />
           </div>
           <div className="flex items-center gap-4">
-            <p className="text-base font-semibold text-gray-900">
+            <p
+              data-testid="cart-item-price"
+              className="text-base font-semibold text-gray-900"
+            >
               {formatMoney(promotional_price || price)}
             </p>
             {promotional_price && discount_percentage && (

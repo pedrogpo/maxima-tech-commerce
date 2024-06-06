@@ -55,6 +55,7 @@ export const CartResume = observer(() => {
                 message: `Compra finalizada com sucesso ${JSON.stringify(currentItems.map((item) => `${item.id} - ${item.name} (${item.quantity}x)`))}`,
               })
             }}
+            data-testid="checkout-button"
           >
             Finalizar compra
           </Button>

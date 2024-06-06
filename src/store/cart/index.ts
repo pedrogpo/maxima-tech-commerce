@@ -23,7 +23,7 @@ export class CartStore {
 
     if (!isServer)
       makePersistable(this, {
-        name: 'lastConsults',
+        name: 'cartItems',
         properties: ['items'],
         storage: localForage,
       })

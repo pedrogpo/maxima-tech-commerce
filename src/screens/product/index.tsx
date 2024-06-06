@@ -40,15 +40,29 @@ export default function ProductScreen({ productData }: IProductScreen) {
             ]}
           />
           <div className="mt-12">
-            <span className="text-2xl font-semibold text-gray-500">
+            <span
+              className="text-2xl font-semibold text-gray-500"
+              data-testid="product-category"
+            >
               {category}
             </span>
-            <h1 className="mt-2 text-5xl font-bold text-gray-900">{name}</h1>
-            <p className="mt-4 max-w-[550px] text-2xl font-medium text-gray-700">
+            <h1
+              className="mt-2 text-5xl font-bold text-gray-900"
+              data-testid="product-name"
+            >
+              {name}
+            </h1>
+            <p
+              data-testid="product-description"
+              className="mt-4 max-w-[550px] text-2xl font-medium text-gray-700"
+            >
               {description}
             </p>
             <div className="mt-8">
-              <p className="text-4xl font-black text-gray-900">
+              <p
+                data-testid="product-price"
+                className="text-4xl font-black text-gray-900"
+              >
                 {formatMoney(promotional_price || price)}
               </p>
               {promotional_price && discount_percentage && (
