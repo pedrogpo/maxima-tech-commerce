@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx'
 
 type OrderTypes = 'name' | 'price' | 'category'
 
-class OrderProductStore {
+export class OrderProductStore {
   selectedType: OrderTypes | null = 'name'
 
   constructor() {
