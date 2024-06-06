@@ -1,5 +1,6 @@
 'use server'
 import { fetchGet } from '~/core/http/api'
+import { HttpError } from '~/core/http/errors'
 import { IProduct, IProductsResponse } from '~/interfaces/api/products'
 
 export const getProducts = async () => {
@@ -8,6 +9,9 @@ export const getProducts = async () => {
       revalidate: 30,
     },
   })
+
+  // Exemplo p testar tratamento de erro na view
+  // throw new HttpError('Not found', 404)
 
   return item
 }

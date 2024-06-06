@@ -1,3 +1,10 @@
+import ErrorScreen from '~/screens/errors'
+
 export default function Page() {
-  return <div>Error</div>
+  return (
+    <ErrorScreen
+      title="Página não encontrada"
+      message="A página que você está procurando não existe."
+    />
+  )
 }

@@ -14,6 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '~/_components/ui/alert-dialog'
+import Toast from '~/core/toast'
 
 export const CartResume = observer(() => {
   const { totalWithDiscount, clearCart, currentItems } = useCart()
@@ -49,7 +50,10 @@ export const CartResume = observer(() => {
             size="lg"
             className="w-full py-6"
             onClick={() => {
-              console.log(JSON.stringify(currentItems))
+              Toast({
+                type: 'success',
+                message: `Compra finalizada com sucesso ${JSON.stringify(currentItems.map((item) => `${item.id} - ${item.name} (${item.quantity}x)`))}`,
+              })
             }}
           >
             Finalizar compra
