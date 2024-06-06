@@ -3,7 +3,7 @@ import { makeAutoObservable } from 'mobx'
 type OrderTypes = 'name' | 'price' | 'category'
 
 class OrderProductStore {
-  selectedType: OrderTypes | null = null
+  selectedType: OrderTypes | null = 'name'
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true })

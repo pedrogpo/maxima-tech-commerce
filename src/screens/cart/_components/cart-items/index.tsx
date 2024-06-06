@@ -5,7 +5,12 @@ import { formatMoney } from '~/core/utils/format'
 import useCart from '~/hooks/useCart'
 
 export const CartItems = observer(() => {
-  const { totalWithDiscount, remove, currentItems, changeQuantity } = useCart()
+  const {
+    totalWithDiscount,
+    removeProductFromCart,
+    currentItems,
+    changeQuantity,
+  } = useCart()
 
   return (
     <div>
@@ -26,7 +31,7 @@ export const CartItems = observer(() => {
               onChangeQuantity={(quantity) => {
                 changeQuantity(item.id, quantity)
               }}
-              onRemove={() => remove(item.id)}
+              onRemove={() => removeProductFromCart(item.id)}
             />
           </div>
         ))}

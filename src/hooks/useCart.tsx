@@ -23,7 +23,7 @@ const useCart = () => {
     setIsCartLoading(false)
   }, [])
 
-  const add = async (product: IProduct) => {
+  const addProductToCart = async (product: IProduct) => {
     setIsAddLoading(true)
     try {
       await addToCartService(product)
@@ -44,7 +44,7 @@ const useCart = () => {
     }
   }
 
-  const remove = (id: string) => {
+  const removeProductFromCart = (id: string) => {
     cartStore.remove(id)
     Toast({
       message: 'Produto removido do carrinho',
@@ -52,30 +52,21 @@ const useCart = () => {
     })
   }
 
-  const clear = () => {
+  const clearCart = () => {
     cartStore.clear()
-    Toast({
-      message: 'Carrinho limpo',
-      type: 'success',
-    })
   }
 
   const changeQuantity = (id: string, quantity: number) => {
     cartStore.changeQuantity(id, quantity)
-
-    Toast({
-      message: 'Quantidade alterada com sucesso',
-      type: 'success',
-    })
   }
 
   const total = clientCartStore?.total || 0
   const totalWithDiscount = clientCartStore?.totalWithDiscount || 0
 
   return {
-    add,
-    remove,
-    clear,
+    addProductToCart,
+    removeProductFromCart,
+    clearCart,
     total,
     totalWithDiscount,
     isAddLoading,

@@ -10,7 +10,7 @@ interface IAddToCart {
 }
 
 export function AddToCart({ productData }: IAddToCart) {
-  const { add, isAddLoading } = useCart()
+  const { addProductToCart, isAddLoading } = useCart()
   const { push } = useRouter()
 
   return (
@@ -19,7 +19,7 @@ export function AddToCart({ productData }: IAddToCart) {
       variant="default"
       size="lg"
       onClick={() => {
-        add(productData).then(() => push('/cart'))
+        addProductToCart(productData).then(() => push('/cart'))
       }}
     >
       <BiLoaderAlt

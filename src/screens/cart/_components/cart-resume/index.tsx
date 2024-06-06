@@ -16,7 +16,7 @@ import {
 } from '~/_components/ui/alert-dialog'
 
 export const CartResume = observer(() => {
-  const { totalWithDiscount, clear, currentItems } = useCart()
+  const { totalWithDiscount, clearCart, currentItems } = useCart()
 
   return (
     <div className="flex lg:justify-end">
@@ -75,7 +75,7 @@ export const CartResume = observer(() => {
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={() => {
-                    clear()
+                    clearCart()
                   }}
                 >
                   Continuar

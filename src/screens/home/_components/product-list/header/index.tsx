@@ -33,14 +33,14 @@ const OrderProducts = observer(() => {
             setSelectedType('name')
           }}
         >
-          Nome
+          Nome (A-Z)
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
             setSelectedType('price')
           }}
         >
-          Preço
+          Preço Crescente
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {

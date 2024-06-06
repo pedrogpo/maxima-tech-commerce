@@ -15,7 +15,7 @@ const LIMIT_PER_PAGE = 5
 export const ListProducts = observer(({ cachedProductList }: IListProducts) => {
   const [currentPage, setCurrentPage] = useState(1)
   const { selectedCategory } = categoryStore
-  const { selectedType } = orderProductStore
+  const { selectedType: selectedOrderType } = orderProductStore
 
   const filteredProducts = cachedProductList
     .filter((product) => {
@@ -24,13 +24,13 @@ export const ListProducts = observer(({ cachedProductList }: IListProducts) => {
       return product.category === selectedCategory
     })
     .sort((a, b) => {
-      if (selectedType === 'name') {
+      if (selectedOrderType === 'name') {
         return a.name.localeCompare(b.name)
       }
-      if (selectedType === 'price') {
+      if (selectedOrderType === 'price') {
         return a.price - b.price
       }
-      if (selectedType === 'category') {
+      if (selectedOrderType === 'category') {
         return a.category.localeCompare(b.category)
       }
 
