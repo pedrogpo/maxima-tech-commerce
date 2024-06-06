@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import { Categories } from '~/core/constants/categories'
 
-class CategoryStore {
+export class CategoryStore {
   selectedCategory: Categories | null = null
 
   constructor() {
