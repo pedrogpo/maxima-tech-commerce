@@ -4,9 +4,9 @@ import { Button } from '~/_components/ui/button'
 
 export function EmptyCart() {
   return (
-    <div className="mb-32 mt-16">
+    <div className="mt-16 min-h-[calc(100vh-125px-4rem)]">
       <Container>
-        <div className="flex h-[300px] flex-col items-center justify-center gap-2">
+        <div className="flex h-[300px] flex-col items-center justify-center gap-2 text-center">
           <h1 className="text-3xl font-bold text-gray-900">Carrinho vazio</h1>
           <p className="mb-4 text-lg font-medium text-gray-700">
             Adicione produtos ao carrinho para continuar
