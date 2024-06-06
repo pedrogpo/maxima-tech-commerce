@@ -44,8 +44,8 @@ export function CartProductCard({
       )}
       <Image
         src={image}
-        width={180}
-        height={180}
+        width={800}
+        height={800}
         alt={name}
         className="min-w-[200px] rounded-l-lg bg-center object-cover max-md:w-full"
       />

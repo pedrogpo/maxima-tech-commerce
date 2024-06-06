@@ -22,8 +22,8 @@ export function ProductCard({
       )}
       <Image
         src={image}
-        width={440}
-        height={360}
+        width={800}
+        height={800}
         alt={name}
         className="h-[360px] w-full rounded-t-lg object-cover"
       />
