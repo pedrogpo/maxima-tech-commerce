@@ -50,7 +50,7 @@ export function CartProductCard({
         width={800}
         height={800}
         alt={name}
-        className="min-w-[200px] rounded-l-lg bg-center object-cover max-md:w-full"
+        className="max-h-[250px] min-h-[250px] min-w-[250px] max-w-[250px] flex-1 rounded-l-lg bg-center object-cover max-md:w-full"
         data-testid="cart-item-image"
       />
       <div className="relative flex w-full flex-col gap-6 p-6 pb-[120px]">
