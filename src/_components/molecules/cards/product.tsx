@@ -20,13 +20,15 @@ export function ProductCard({
           {discount_percentage}% OFF
         </div>
       )}
-      <Image
-        src={image}
-        width={800}
-        height={800}
-        alt={name}
-        className="h-[360px] w-full rounded-t-lg object-cover"
-      />
+      <Link href={`/product/${id}`} className="overflow-hidden">
+        <Image
+          src={image}
+          width={800}
+          height={800}
+          alt={name}
+          className="h-[360px] w-full rounded-t-lg object-cover transition-transform hover:scale-105"
+        />
+      </Link>
       <div className="flex flex-col justify-center gap-6 p-6">
         <div className="flex flex-col gap-4">
           <div>
